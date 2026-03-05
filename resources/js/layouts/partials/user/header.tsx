@@ -20,51 +20,48 @@ export function UserHeader({ showProfileMenu = true }: UserHeaderProps) {
     };
 
     return (
-        <header className='bg-primary-50 shadow z-50 '>
-            <div className='container mx-auto flex items-center justify-between py-4 px-4 text-primary-500'>
-                <Link href="#" className="flex items-center gap-3">
-                    <svg className="h-12 w-12" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="25" r="12" stroke="currentColor" strokeWidth="3" fill="none" />
-                        <path d="M15 40 Q50 20, 85 40" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" />
-                    </svg>
-                    <div>
-                        <div className="font-sans text-xl font-bold tracking-wider">HORIZON WILLS</div>
-                        <div className="text-xs text-primary-300 tracking-[0.3em]">PROTECTING YOUR ASSETS</div>
+        <header className="border-b bg-white">
+             <div className="bg-[#FDF7F7] font-sans text-gray-900 overflow-x-hidden">
+                <div className="container mx-auto mt-10 relative z-50 flex items-center justify-between bg-[#f4eded] px-6 py-5 md:px-12">
+            
+                    <div className="flex items-center gap-2">
+                        <img src="/assets/images/pngegg.png" alt="Logo" className="h-16 w-auto"/>
                     </div>
-                </Link>
 
-                {showProfileMenu ? (
-                    <>
-                        <div className='hidden md:flex items-center gap-4'>
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" className="flex items-center gap-2 h-auto p-2 hover:bg-transparent hover:scale-105 transition-transform focus-visible:ring-0 focus-visible:ring-offset-0">
-                                        <UserInfo user={auth.user} />
-                                    </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent className="w-64 p-2 shadow-sm border-none" align="end" sideOffset={8}>
-                                    <UserMenuContent user={auth.user} />
-                                </DropdownMenuContent>
-                            </DropdownMenu>
+                    <ul className="hidden md:flex space-x-10 text-sm font-semibold tracking-wider font-['Libre_Franklin']">
+                        <li><a href="#" onClick={(e) => { e.preventDefault(); router.get(route('dashboard')); }} className="text-red-600">Order</a></li>
+                        <li><a href="#" onClick={(e) => { e.preventDefault(); router.get(route('profile-edit')); }} className="hover:text-red-600 transition">Profile</a></li>
+                        <li><a href="#" onClick={(e) => { e.preventDefault(); router.get(route('settings-details')); }} className="hover:text-red-600 transition">Settings</a></li>
+                    </ul>
+
+                    <div className="flex items-center gap-3 md:gap-6">
+                        <div className="relative hidden sm:flex items-center gap-2 rounded bg-black px-4 py-2.5">
+                        <i className="fa-solid fa-magnifying-glass text-xs text-gray-400"></i>
+                        <input type="text" placeholder="Search" className="w-20 md:w-32 bg-transparent text-xs text-white outline-none placeholder:text-gray-500"></input>
                         </div>
-                        <div className='md:hidden'>
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" className="relative h-9 w-9 rounded-md ring-offset-background transition-all hover:ring-2 hover:ring-ring">
-                                        <Menu className="size-6" />
-                                    </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent className="w-64 p-2 shadow-sm border-none" align="end" sideOffset={8}>
-                                    <UserMenuContent user={auth.user} />
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </div>
-                    </>
-                ) : (
-                    <Button variant="ghost" className="text-primary-500 hover:text-primary-600" onClick={handleLogout}>
-                        Log out
-                    </Button>
-                )}
+                        
+                        <button className="text-lg"><i className="fa-solid fa-cart-shopping"></i></button>
+                        <button className="text-lg"><i className="fa-regular fa-circle-user"></i></button>
+                        
+                        <button className="md:hidden text-2xl" onClick={() => document.getElementById('mobile-menu')?.classList.toggle('hidden')}>
+                        <i className="fa-solid fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <div id="mobile-menu" className="absolute left-0 top-full hidden w-full bg-[#f4eded] border-t border-gray-200 p-6 md:hidden">
+                        <ul className="flex flex-col space-y-4 text-sm font-semibold uppercase tracking-wider font-['Libre_Franklin']">
+                        <li><a href="#" onClick={(e) => { e.preventDefault(); router.get(route('dashboard')); }} className="block text-red-600">Order</a></li>
+                        <li><a href="#" onClick={(e) => { e.preventDefault(); router.get(route('profile-edit')); }} className="block">Profile</a></li>
+                        <li><a href="#" onClick={(e) => { e.preventDefault(); router.get(route('settings-details')); }} className="block">Settings</a></li>
+                        <li className="pt-4 border-t border-gray-300">
+                            <div className="flex items-center gap-2 rounded bg-black px-4 py-2">
+                            <i className="fa-solid fa-magnifying-glass text-xs text-gray-400"></i>
+                            <input type="text" placeholder="Search" className="w-full bg-transparent text-xs text-white outline-none"></input>
+                            </div>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </header>
     );

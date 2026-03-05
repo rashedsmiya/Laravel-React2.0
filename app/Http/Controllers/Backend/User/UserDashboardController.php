@@ -13,4 +13,14 @@ class UserDashboardController extends Controller
     {
         return Inertia::render('backend/User/UserDashboard');
     }
+    
+    public function edit(Request $request): Response
+    {
+        return Inertia::render('backend/User/ProfileEdit');
+    }
+
+    public function settingsDetails(Request $request): Response
+    {
+        return Inertia::render('backend/User/SettingsDetails');
+    }
 }

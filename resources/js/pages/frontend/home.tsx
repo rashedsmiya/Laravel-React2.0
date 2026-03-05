@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 import FrontendLayout from '@/layouts/frontend-layout';
 
 const slides = [
@@ -32,7 +32,7 @@ const HeroSlider = () => {
       {/* Content Side */}
       <div className="relative max-w-xl z-20 text-center lg:text-left transition-all duration-500 ease-in-out">
         <div className="flex items-center justify-center lg:justify-start gap-2 mb-6">
-          <img src="images/Group 2.png" alt="logo icon" />
+          <img src="https://www.dreamstime.com/photos-images/nature.html" alt="logo icon" />
           <p className="text-[12px] font-semibold font-['Libre_Franklin'] tracking-widest text-gray-800 uppercase">
             {slides[current].tagline}
           </p>
@@ -221,7 +221,7 @@ export default function Home() {
                         Teal sweatsuits
                         </h1>
                         <div className="mb-4 lg:mb-8 h-10 lg:h-24 w-px bg-gray-400" />
-                        <button className="bg-[#bc2a2e] lg:w-full max-w-[200px] sm:w-auto px-10 py-3 md:py-4 text-base md:text-lg font-medium transition-colors hover:bg-[#a02428] active:scale-95">
+                        <button onClick={() => router.visit('/detailspage')} className="bg-[#bc2a2e] lg:w-full max-w-[200px] sm:w-auto px-10 py-3 md:py-4 text-base md:text-lg font-medium transition-colors hover:bg-[#a02428] active:scale-95">
                         View Details
                         </button>
                     </div>
