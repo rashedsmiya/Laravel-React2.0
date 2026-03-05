@@ -4,28 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class UserSelectionController extends Controller
 {
     /**
      * Get a list of all users for admin selection panel
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function getUsers(Request $request)
+    public function getUsers(Request $request): Response
     {
-        // Get all users
-        $users = User::select('name', 'email')
-            ->get()
-            ->map(function ($user) {
-                return [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                ];
-            });
+        $users = User::select(['id', 'name', 'email'])->get();
 
-        return response()->json([
+        return Inertia::render('backend/Admin/Users/UserSelection', [
             'users' => $users,
         ]);
     }

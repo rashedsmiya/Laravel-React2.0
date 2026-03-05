@@ -1,5 +1,5 @@
 import { Link, router, usePage } from '@inertiajs/react';
-import { LogOut, Menu } from 'lucide-react';
+import { LogOut, Menu, PanelLeft } from 'lucide-react';
 
 import AppLogo from '@/components/app-logo';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -10,6 +10,7 @@ import { type SharedData } from '@/types';
 
 
 export function AdminHeader() {
+    const { url } = usePage<SharedData>().props;
     const { auth } = usePage<SharedData>().props;
     const admin = auth.admin;
     const getInitials = useInitials();
@@ -58,9 +59,24 @@ export function AdminHeader() {
     return (
         <header className='bg-primary-50'>
             <div className='container mx-auto flex items-center justify-between py-4 px-4 text-primary-500'>
-                <Link href={route('admin.dashboard')} className='flex text-primary-500 items-center gap-2'>
-                    <AppLogo className="h-16 w-auto" />
-                </Link>
+                <div className="flex items-center gap-4">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="lg:hidden"
+                        onClick={() => {
+                            const sidebar = document.getElementById('sidebar');
+                            const overlay = document.getElementById('sidebarOverlay');
+                            if (sidebar) sidebar.classList.toggle('-translate-x-full');
+                            if (overlay) overlay.classList.toggle('hidden');
+                        }}
+                    >
+                        <PanelLeft className="h-5 w-5" />
+                    </Button>
+                    <Link href={route('admin.dashboard')} className='flex text-primary-500 items-center gap-2'>
+                        <AppLogo className="h-16 w-auto" />
+                    </Link>
+                </div>
                 <div className='hidden md:flex items-center gap-4'>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
