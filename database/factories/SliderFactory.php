@@ -28,9 +28,7 @@ class SliderFactory extends Factory
                 'Stand Out From The Crowd',
             ]),
             'image' => fake()->randomElement([
-                'https://images.unsplash.com/photo-1768489038182-7db6980fd841?q=80&w=687&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1767172352170-19b1140dc51f?q=80&w=1170&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1767431199061-3237ddd5de9f?q=80&w=1210&auto=format&fit=crop',
+
             ]),
             'order' => fake()->unique()->numberBetween(1, 10),
             'is_active' => true,

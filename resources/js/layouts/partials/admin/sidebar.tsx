@@ -79,6 +79,14 @@ export const AdminSidebar = React.memo(() => {
               <i className="fas fa-images w-5" />
               <span className="ml-3 font-medium">Images</span>
             </Link>
+
+            <Link
+            href={route('admin.categories.index')}
+            className={navLinkClasses(url.startsWith('/admin/categories'))}
+          >
+            <i className="fas fa-tags w-5" />
+            <span className="ml-3 font-medium">Categories</span>
+          </Link>
           </nav>
         </div>
         <div className="px-6 border-t border-gray-400 pt-6">

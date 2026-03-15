@@ -156,7 +156,7 @@ const CategorySection: React.FC<{ categories: Category[] }> = ({ categories }) =
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {categories.map((category) => (
+                    {categories.slice(0, 6).map((category) => (
                         <div key={category.id} className="group cursor-pointer">
                             <div className="overflow-hidden rounded-md aspect-[4/5] bg-gray-200">
                                 <img
@@ -186,7 +186,7 @@ const FeaturedProductsSection: React.FC<{ products: Product[] }> = ({ products }
             <section className="px-10 lg:px-24 lg:py-20 py-6">
                 <div className="flex items-center justify-between mb-10">
                     <h2 className="lg:text-5xl text-3xl font-semibold tracking-tight font-['Alumni_Sans']">
-                    Featured Products
+                    Featured Products 
                     </h2>
                 </div>
                 <div className="grid grid-cols-2 gap-8">

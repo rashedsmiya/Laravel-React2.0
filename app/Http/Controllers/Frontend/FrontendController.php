@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slider;
+use Illuminate\Support\Facades\Schema;
 use Inertia\Inertia;
 use Inertia\Response;
-use Illuminate\Support\Facades\Schema;
 
 class FrontendController extends Controller
 {
@@ -16,7 +16,7 @@ class FrontendController extends Controller
     {
         $sliders = Slider::active()->orderBy('order')->get();
         $categories = Category::active()->orderBy('order')->limit(2)->get();
-        
+
         // Only query products if the table exists
         $featuredProducts = [];
         $newArrivals = [];

@@ -28,7 +28,6 @@ class CategoryFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name),
-            'image' => 'https://images.unsplash.com/photo-1768489038182-7db6980fd841?q=80&w=687&auto=format&fit=crop',
             'description' => fake()->sentence(),
             'is_active' => true,
             'order' => fake()->unique()->numberBetween(1, 10),

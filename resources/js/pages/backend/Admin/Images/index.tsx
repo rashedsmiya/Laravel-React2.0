@@ -3,9 +3,9 @@ import { useState, useRef } from 'react';
 
 import AdminLayout from '@/layouts/admin-layout';
 
-import DeleteConfirmation from './components/DeleteConfirmation';
-import ImageTable from './components/ImageTable';
-import UpdateModal from './components/UpdateModal';
+import DeleteConfirmation from '../components/DeleteConfirmation';
+import ImageTable from '../components/ImageTable';
+import UpdateModal from '../components/UpdateModal';
 
 interface ImageItem {
     id: number;

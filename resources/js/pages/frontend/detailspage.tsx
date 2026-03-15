@@ -14,14 +14,14 @@ const detailspage = () => {
                             {/* LEFT: IMAGES */}
                             <div>
                                 <div className="rounded-xl overflow-hidden bg-white">
-                                    <img
+                                    {/* <img
                                         src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg"
                                         className="w-full object-cover"
-                                    />
+                                    /> */}
                                 </div>
                                 {/* Thumbnails */}
                                 <div className="flex gap-4 mt-4">
-                                    <img
+                                    {/* <img
                                         src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg"
                                         className="w-20 h-20 object-cover rounded-lg cursor-pointer border border-neutral-300"
                                     />
@@ -36,7 +36,7 @@ const detailspage = () => {
                                     <img
                                         src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg"
                                         className="w-20 h-20 object-cover rounded-lg cursor-pointer border border-neutral-300"
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                             {/* RIGHT: DETAILS */}
@@ -194,10 +194,10 @@ const detailspage = () => {
                                 </div>
                                 <div className="border-b pb-6">
                                     <div className="flex items-center gap-3">
-                                        <img
+                                        {/* <img
                                             src="https://assets.bucketlistly.blog/sites/5adf778b6eabcc00190b75b1/assets/6075182186d092000b192cee/best-free-travel-images-image-2.jpg"
                                             className="w-10 h-10 rounded-full"
-                                        />
+                                        /> */}
                                         <div>
                                             <p className="font-medium">Brooklyn Simmons</p>
                                             <div className="text-orange-500 text-sm">★★★★★</div>

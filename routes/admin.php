@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\Admin\AdminDashboardController;
 use App\Http\Controllers\Backend\Admin\AdminLoginController;
+use App\Http\Controllers\Backend\Admin\CategoryController;
 use App\Http\Controllers\Backend\Admin\ImageController;
 use App\Http\Controllers\Backend\Admin\Orders\OrderController;
 use App\Http\Controllers\Backend\Admin\Products\ProductController;
@@ -25,5 +26,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/images/{image}', [ImageController::class, 'update'])->name('images.update');
         Route::delete('/images/{image}', [ImageController::class, 'destroy'])->name('images.destroy');
         Route::get('/user-dashboard', [UserSelectionController::class, 'getUsers'])->name('user-dashboard');
+
+        // Category Management
+        Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+        Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+        Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+        Route::put('/categories/{category}/toggle-status', [CategoryController::class, 'toggleStatus'])->name('categories.toggle-status');
+        Route::put('/categories/{category}/reorder', [CategoryController::class, 'reorder'])->name('categories.reorder');
     });
 });
