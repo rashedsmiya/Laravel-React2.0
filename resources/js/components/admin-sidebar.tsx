@@ -6,6 +6,7 @@ import {
     ShoppingCart,
     Package,
     BarChart3,
+    Image,
 } from 'lucide-react';
 
 import { NavFooter } from '@/components/nav-footer';
@@ -32,6 +33,7 @@ export function AdminSidebar({
 }: AdminSidebarProps) {
     const dashboardUrl = route('admin.dashboard');
     const usersUrl = route('admin.users.list');
+    const galleryUrl = route('admin.gallery.index');
 
     const mainNavItems: NavItem[] = [
         {
@@ -69,6 +71,12 @@ export function AdminSidebar({
             href: '#',
             icon: Settings,
             slug: 'settings',
+        },
+        {
+            title: 'Gallery Slider',
+            href: galleryUrl,
+            icon: Image,
+            slug: 'gallery',
         },
     ];
 

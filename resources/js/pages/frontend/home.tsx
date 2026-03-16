@@ -36,7 +36,7 @@ const HeroSlider: React.FC<{ sliders: Slider[] }> = ({ sliders }) => {
 
     // Use database sliders, fallback to empty array
     const slides = sliders.length > 0 ? sliders : [];
-    
+
     const nextSlide = () => setCurrent(current === slides.length - 1 ? 0 : current + 1);
     const prevSlide = () => setCurrent(current === 0 ? slides.length - 1 : current - 1);
 
@@ -46,22 +46,22 @@ const HeroSlider: React.FC<{ sliders: Slider[] }> = ({ sliders }) => {
 
     return (
         <section className="relative min-h-[90vh] lg:h-[80vh] flex flex-col lg:flex-row items-center px-6 md:px-12 lg:px-24 overflow-hidden container mx-auto lg:pt-20 pt-8">
-          
+
           {/* Content Side */}
           <div className="relative max-w-xl z-20 text-center lg:text-left transition-all duration-500 ease-in-out">
             <div className="flex items-center justify-center lg:justify-start gap-2 mb-6">
-              <img src="https://www.dreamstime.com/photos-images/nature.html" alt="logo icon" />
+              <img src="https://vos.line-scdn.net/strapi-cluster-instance-bucket-84/appicon_01_f9ed1cf01f.jpeg" className="w-18 h-10 " />
               <p className="text-[12px] font-semibold font-['Libre_Franklin'] tracking-widest text-gray-800 uppercase">
                 {slides[current].tagline}
               </p>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold font-['Alumni_Sans'] leading-[1.1] mb-10 transition-opacity duration-500">
               {slides[current].title}
             </h1>
 
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-              <button className="bg-[#B32B2B] text-white px-10 py-3.5 text-sm font-medium font-['Libre_Franklin'] rounded-md hover:bg-black transition w-full sm:w-auto">
+              <button className="bg-red-800 text-white px-10 py-3.5 text-sm font-medium font-['Libre_Franklin'] rounded-md hover:bg-black transition w-full sm:w-auto">
                 Buy Now
               </button>
               <button className="border border-[#B32B2B] text-[#B32B2B] px-10 py-3.5 text-sm font-medium font-['Libre_Franklin'] rounded-md hover:bg-[#B32B2B] hover:text-white transition w-full sm:w-auto">
@@ -83,14 +83,14 @@ const HeroSlider: React.FC<{ sliders: Slider[] }> = ({ sliders }) => {
           </div>
 
           {/* Navigation Buttons */}
-          <button 
+          <button
             onClick={prevSlide}
             className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#B32B2B] text-white w-12 h-12 flex items-center justify-center rounded-md z-30 hover:bg-black transition"
           >
             <i className="fa-solid fa-arrow-left" />
           </button>
-          
-          <button 
+
+          <button
             onClick={nextSlide}
             className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#B32B2B] text-white w-12 h-12 flex items-center justify-center rounded-md z-30 hover:bg-black transition"
           >
@@ -100,7 +100,7 @@ const HeroSlider: React.FC<{ sliders: Slider[] }> = ({ sliders }) => {
           {/* Slide Indicators (Dots) */}
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-40">
             {slides.map((_, index) => (
-              <div 
+              <div
                 key={index}
                 className={`h-1.5 transition-all duration-300 rounded-full ${current === index ? 'w-8 bg-[#B32B2B]' : 'w-2 bg-gray-300'}`}
               />
@@ -111,9 +111,19 @@ const HeroSlider: React.FC<{ sliders: Slider[] }> = ({ sliders }) => {
 };
 
 const CategorySection: React.FC<{ categories: Category[] }> = ({ categories }) => {
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 4;
+    const totalPages = Math.ceil(categories.length / itemsPerPage);
+
+    const nextPage = () => setCurrentPage(currentPage === totalPages - 1 ? 0 : currentPage + 1);
+    const prevPage = () => setCurrentPage(currentPage === 0 ? totalPages - 1 : currentPage - 1);
+
     if (categories.length === 0) {
         return null;
     }
+
+    const startIndex = currentPage * itemsPerPage;
+    const currentCategories = categories.slice(startIndex, startIndex + itemsPerPage);
 
     return (
         <div className="text-[#1A1A1A] container mx-auto">
@@ -123,7 +133,10 @@ const CategorySection: React.FC<{ categories: Category[] }> = ({ categories }) =
                     Category
                     </h2>
                     <div className="flex gap-3">
-                    <button className="bg-[#B22222] text-white p-3.5 hover:bg-black transition rounded-md shadow-md">
+                    <button
+                        onClick={prevPage}
+                        className="bg-[#B22222] text-white p-3.5 hover:bg-black transition rounded-md shadow-md"
+                    >
                         <svg
                         className="w-3 h-3"
                         fill="none"
@@ -138,7 +151,10 @@ const CategorySection: React.FC<{ categories: Category[] }> = ({ categories }) =
                         />
                         </svg>
                     </button>
-                    <button className="bg-[#B22222] text-white p-3.5 hover:bg-black transition rounded-md shadow-md">
+                    <button
+                        onClick={nextPage}
+                        className="bg-[#B22222] text-white p-3.5 hover:bg-black transition rounded-md shadow-md"
+                    >
                         <svg
                         className="w-3 h-3"
                         fill="none"
@@ -156,7 +172,7 @@ const CategorySection: React.FC<{ categories: Category[] }> = ({ categories }) =
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {categories.slice(0, 6).map((category) => (
+                    {currentCategories.map((category) => (
                         <div key={category.id} className="group cursor-pointer">
                             <div className="overflow-hidden rounded-md aspect-[4/5] bg-gray-200">
                                 <img
@@ -186,7 +202,7 @@ const FeaturedProductsSection: React.FC<{ products: Product[] }> = ({ products }
             <section className="px-10 lg:px-24 lg:py-20 py-6">
                 <div className="flex items-center justify-between mb-10">
                     <h2 className="lg:text-5xl text-3xl font-semibold tracking-tight font-['Alumni_Sans']">
-                    Featured Products 
+                    Featured Products
                     </h2>
                 </div>
                 <div className="grid grid-cols-2 gap-8">

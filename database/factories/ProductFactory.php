@@ -27,10 +27,10 @@ class ProductFactory extends Factory
             'review_count' => fake()->numberBetween(0, 1000),
             'colors' => json_encode(fake()->randomElements(['Red', 'Blue', 'Green', 'Black', 'White', 'Gray'], fake()->numberBetween(1, 3))),
             'sizes' => json_encode(fake()->randomElements(['S', 'M', 'L', 'XL', 'XXL'], fake()->numberBetween(1, 4))),
-            'image' => 'https://picsum.photos/seed/' . fake()->uuid() . '/800/1000',
+            'image' => 'https://picsum.photos/seed/'.fake()->uuid().'/800/1000',
             'images' => json_encode([
-                'https://picsum.photos/seed/' . fake()->uuid() . '/800/1000',
-                'https://picsum.photos/seed/' . fake()->uuid() . '/800/1000',
+                'https://picsum.photos/seed/'.fake()->uuid().'/800/1000',
+                'https://picsum.photos/seed/'.fake()->uuid().'/800/1000',
             ]),
             'in_stock' => fake()->boolean(80),
             'stock_quantity' => fake()->numberBetween(0, 100),

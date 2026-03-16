@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\Admin\AdminDashboardController;
 use App\Http\Controllers\Backend\Admin\AdminLoginController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
+use App\Http\Controllers\Backend\Admin\GalleryController;
 use App\Http\Controllers\Backend\Admin\ImageController;
 use App\Http\Controllers\Backend\Admin\Orders\OrderController;
 use App\Http\Controllers\Backend\Admin\Products\ProductController;
@@ -34,5 +35,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
         Route::put('/categories/{category}/toggle-status', [CategoryController::class, 'toggleStatus'])->name('categories.toggle-status');
         Route::put('/categories/{category}/reorder', [CategoryController::class, 'reorder'])->name('categories.reorder');
+
+        // Gallery Management
+        Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+        Route::post('/gallery', [GalleryController::class, 'store'])->name('gallery.store');
+        Route::put('/gallery/{galleryItem}', [GalleryController::class, 'update'])->name('gallery.update');
+        Route::delete('/gallery/{galleryItem}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+        Route::put('/gallery/{galleryItem}/toggle-status', [GalleryController::class, 'toggleStatus'])->name('gallery.toggle-status');
+        Route::put('/gallery/{galleryItem}/reorder', [GalleryController::class, 'reorder'])->name('gallery.reorder');
     });
 });

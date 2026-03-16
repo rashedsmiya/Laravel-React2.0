@@ -15,14 +15,20 @@ class UpdateCategoryRequest extends FormRequest
     {
         $categoryId = $this->route('category');
 
-        return [
+        $rules = [
             'name' => 'required|string|max:255|unique:categories,name,'.$categoryId,
             'slug' => 'required|string|max:255|unique:categories,slug,'.$categoryId,
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_active' => 'boolean',
             'order' => 'integer|min:0',
         ];
+
+        // Only validate image if it's present in the request
+        if ($this->hasFile('image')) {
+            $rules['image'] = 'image|mimes:jpeg,png,jpg,gif|max:2048';
+        }
+
+        return $rules;
     }
 
     public function messages(): array

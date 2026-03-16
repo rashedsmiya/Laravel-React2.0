@@ -1,21 +1,18 @@
 import { Link } from '@inertiajs/react';
 
-import AppLogo from '@/components/app-logo';
-
 export function FrontendHeader() {
     return (
         <header className="border-b bg-white">
              <div className="bg-[#FDF7F7] font-sans text-gray-900 overflow-x-hidden">
                 <div className="container mx-auto mt-10 relative z-50 flex items-center justify-between bg-[#f4eded] px-6 py-5 md:px-12">
-            
                     <div className="flex items-center gap-2">
                         <img src="/assets/images/pngegg.png" alt="Logo" className="h-16 w-auto"/>
                     </div>
 
                     <ul className="hidden md:flex space-x-10 text-sm font-semibold tracking-wider font-['Libre_Franklin']">
-                        <li><a href="#" className="text-red-600">Men</a></li>
-                        <li><a href="#" className="hover:text-red-600 transition">Women</a></li>
-                        <li><a href="#" className="hover:text-red-600 transition">Accessories</a></li>
+                        <li><Link href="/" className="text-red-600">Home</Link></li>
+                        <li><Link href="/men" className="hover:text-red-600 transition">Men</Link></li>
+                        <li><Link href="/accessories" className="hover:text-red-600 transition">Accessories</Link></li>
                     </ul>
 
                     <div className="flex items-center gap-3 md:gap-6">
@@ -23,10 +20,10 @@ export function FrontendHeader() {
                         <i className="fa-solid fa-magnifying-glass text-xs text-gray-400"></i>
                         <input type="text" placeholder="Search" className="w-20 md:w-32 bg-transparent text-xs text-white outline-none placeholder:text-gray-500"></input>
                         </div>
-                        
+
                         <button className="text-lg"><i className="fa-solid fa-cart-shopping"></i></button>
                         <button className="text-lg"><i className="fa-regular fa-circle-user"></i></button>
-                        
+
                         <button className="md:hidden text-2xl" onClick={() => document.getElementById('mobile-menu')?.classList.toggle('hidden')}>
                         <i className="fa-solid fa-bars"></i>
                         </button>

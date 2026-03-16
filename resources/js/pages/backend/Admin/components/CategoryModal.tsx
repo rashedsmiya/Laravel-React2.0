@@ -18,7 +18,7 @@ interface CategoryModalProps {
 export function CategoryModal({ category, onClose }: CategoryModalProps) {
     const { url } = usePage();
     const isEditing = !!category?.id;
-    
+
     const { data, setData, post, put, processing, errors } = useForm({
         name: category?.name || '',
         slug: category?.slug || '',
@@ -30,13 +30,15 @@ export function CategoryModal({ category, onClose }: CategoryModalProps) {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (isEditing) {
             put(route('admin.categories.update', category.id), {
+                forceFormData: true,
                 onSuccess: () => onClose(),
             });
         } else {
             post(route('admin.categories.store'), {
+                forceFormData: true,
                 onSuccess: () => onClose(),
             });
         }
@@ -76,7 +78,7 @@ export function CategoryModal({ category, onClose }: CategoryModalProps) {
                             />
                             {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                         </div>
-                        
+
                         <div>
                             <label className="block text-sm font-medium mb-2">Slug *</label>
                             <input
@@ -120,8 +122,8 @@ export function CategoryModal({ category, onClose }: CategoryModalProps) {
                             />
                             {category?.image && (
                                 <div className="mt-2">
-                                    <img 
-                                        src={category.image} 
+                                    <img
+                                        src={category.image}
                                         alt="Current category image"
                                         className="w-32 h-32 object-cover rounded-lg"
                                     />

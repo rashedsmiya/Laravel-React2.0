@@ -96,3 +96,18 @@ export interface DropdownPosition {
     top: number;
     left: number;
 }
+
+export interface GalleryItem {
+    id: number;
+    image_url: string;
+    title: string;
+    alt_text?: string;
+    col_span?: string;
+    height?: string;
+    section: number;
+    order: number;
+    link?: string;
+    is_active: boolean;
+    created_at: string;
+    updated_at: string;
+}

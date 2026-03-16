@@ -39,6 +39,7 @@ class CategoryController extends Controller
     {
         $validated = $request->validated();
 
+        // Update image if a new file is uploaded
         if ($request->hasFile('image')) {
             // Delete old image
             if ($category->image) {

@@ -1,7 +1,8 @@
 import { Head } from '@inertiajs/react';
 import AdminLayout from '@/layouts/admin-layout';
+import GalleryControlPanel from '@/components/gallery-control-panel';
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ galleryItems = [], totalGalleryItems = 0, activeGalleryItems = 0 }) {
     return (
         <AdminLayout>
             <Head title="Dashboard" />
@@ -192,53 +193,11 @@ export default function AdminDashboard() {
                         </table>
                     </div>
                     </div>
-                    <div className="col-span-12 lg:col-span-4 bg-[#FDF7F7] p-4 md:p-6 rounded-lg border border-gray-100 shadow-sm flex flex-col items-center lg:items-start">
-                    <h3 className="text-lg font-bold mb-8 w-full text-center lg:text-left">
-                        Avg seals
-                    </h3>
-                    <div className="relative flex items-center justify-center mb-8">
-                        <div
-                        className="w-32 h-32 xs:w-36 xs:h-36 md:w-40 md:h-40 rounded-full border-[12px] md:border-[16px] border-transparent"
-                        style={{
-                            borderTopColor: "#c53030",
-                            borderLeftColor: "#c53030",
-                            borderRightColor: "#2dd4bf",
-                            transform: "rotate(12deg)"
-                        }}
-                        ></div>
-                        <div
-                        className="absolute w-32 h-32 xs:w-36 xs:h-36 md:w-40 md:h-40 rounded-full border-[12px] md:border-[16px] border-transparent"
-                        style={{
-                            borderBottomColor: "#4b5563",
-                            transform: "rotate(15deg)"
-                        }}
-                        ></div>
-                        <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-xs font-bold text-gray-800">6.8k</span>
-                        <span className="text-[8px] text-gray-400 uppercase">Total</span>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:flex lg:flex-wrap gap-y-3 gap-x-4 text-[10px] w-full justify-center lg:justify-start">
-                        <div className="flex items-center justify-center lg:justify-start">
-                        <span className="w-3 h-3 bg-red-600 rounded-sm mr-2 flex-shrink-0" />
-                        <span className="text-gray-500 whitespace-nowrap">
-                            Hoodies: 3.8k pcs
-                        </span>
-                        </div>
-                        <div className="flex items-center justify-center lg:justify-start">
-                        <span className="w-3 h-3 bg-teal-400 rounded-sm mr-2 flex-shrink-0" />
-                        <span className="text-gray-500 whitespace-nowrap">
-                            Sweatsuits: 1k pcs
-                        </span>
-                        </div>
-                        <div className="flex items-center justify-center lg:justify-start">
-                        <span className="w-3 h-3 bg-gray-600 rounded-sm mr-2 flex-shrink-0" />
-                        <span className="text-gray-500 whitespace-nowrap">
-                            Others: 2k pcs
-                        </span>
-                        </div>
-                    </div>
-                    </div>
+                    <GalleryControlPanel
+                        galleryItems={galleryItems}
+                        totalGalleryItems={totalGalleryItems}
+                        activeGalleryItems={activeGalleryItems}
+                    />
                 </div>
                 </main>
             </div>
